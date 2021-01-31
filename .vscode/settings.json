@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": false,
+            "driver": "MySQL",
+            "name": "con",
+            "group": "ConGroup",
+            "database": "cadastrosvs",
+            "username": "root",
+            "connectionTimeout": 60
+        }
+    ]
+}

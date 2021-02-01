@@ -1,5 +1,5 @@
-<?php
 
+<?php
 /**
  *                      **mysql**
  * DDL -> DEFINIÇÃO
@@ -30,4 +30,8 @@
  *ESPACIAL 
         -> Geometry, Point, Polygon, MultiPolygon
  * 
+ * 
  */
+
+
+?>

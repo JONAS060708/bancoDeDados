@@ -1,0 +1,1 @@
+UPDATE `cursos` SET `descricao` = 'FAZER UM APP' WHERE `cursos`.`idcursos` = 6;

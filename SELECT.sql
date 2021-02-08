@@ -9,7 +9,7 @@ select * from cursos where nome not like '%a%';
 select * from cursos where nome like 'ph%p_';/*o underline no final exige que tenha algum caracter após a palavra escrita*/
 select * from gafanhotos where nome like '%silva%';
 
-/*FUNÇÕES DE AGREGAÇÃO NO SQL*/
+/*FUNÇÕES DE AGREGAÇÃO NO SQL DISTINÇÃO PEGA APENAS UM VALOR DE CADA LINHA*/
 
 select  distinct nacionalidade from gafanhotos order by nacionalidade; /*DISTINCT MOSTRA OS DADOS SEM REPETIÇÃO CASO TENHA*/
 select count(*) from cursos where carga > 40; /*FAZ A CONTAGEN DE LINHAS DA COLUNA SELECIONADA OU DE TUDO*/
@@ -18,6 +18,21 @@ select max(totaulas) from cursos where ano ='2016';
 select nome,min(totaulas) from cursos where ano ='2016';
 select sum(totaulas) from cursos where ano ='2016';
 select avg(totaulas) from cursos; /*MEDIA DO TOTAL DE AULAS*/
+
+/*SELECT AULA 3 AGRUPAMENTO */
+select totaulas, count(*) from cursos group by totaulas;/*AGRUPA OS CAMPOS E CONTA QUANTAS UNIDADES TEM CADA GRUPO*/
+select ano, count(*) FROM cursos 
+group by ano /*agrupa*/
+having count(ano) >= 5 /* só funciona com o campo agrupado , quem tem seleciona apenas os maior igual a contagem 5*/ 
+order by count(*); /*ordena*/
+
+/*COLOCANDO SELECT DENTRO DE SELECT*/
+select avg(carga) from cursos; /*media*/
+select carga,count(*) from cursos/*seleciona*/
+where ano > 2015 /*filtra*/
+group by carga /*agrupa*/
+having carga > (select avg(carga) from cursos); /**/
+
 
 /*EXERCÍCIOS*/
 select * from gafanhotos where sexo='F';
@@ -30,4 +45,10 @@ select avg(peso) from gafanhotos;
 select nome,nascimento,min(peso) from gafanhotos where sexo ='F' and nacionalidade != 'Brasil' and nascimento between '1990-01-01' and '2000-12-31';
 select * from gafanhotos where sexo='F' and altura > '1.90';
 
+/*EXERCÍCIOS SELECT 3*/
+select profissao,count(*)  from gafanhotos group by profissao order by count(profissao);
+select sexo,count(*) from gafanhotos where nascimento > '2005-01-01' group by sexo ;
+select * from gafanhotos where nacionalidade = 'brasil';
+select nacionalidade, count(*) from gafanhotos where nacionalidade != 'brasil' group by nacionalidade
+having count(nacionalidade) > 1 ;
 

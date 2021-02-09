@@ -1,7 +1,7 @@
 /*DIAGRAMA ENTIDADE RELACIONAMENTO DER*/
 /*
 ENTIDADES - ATRIBUTOS--
-RELACIONAMENTO -- 
+RELACIONAMENTO -- ternários?
 CARDINALIDADE -- 
 
 chave primaria , chave estrangeira é a chave primaria de outra tabela
@@ -28,4 +28,32 @@ order by g.cursopreferido;
 
 select nome,cursopreferido from gafanhotos where cursopreferido != 'null' order by cursopreferido;
 select nome,ano from cursos;
+
+
 /*RELACIONAMENTO MUITOS PARA MUITOS CLIENTE PRODUTO*/
+create table assiste(
+id int not null auto_increment,
+data date,
+idgafanhoto int,
+idcurso int,
+primary key(id),
+foreign key (idgafanhoto) references gafanhotos(id),
+foreign key(idcurso) references cursos(idcurso) 
+)default charset = utf8;
+
+describe assiste;
+select * from assiste;
+insert into assiste
+values
+(default,'2014-06-01','7','10'),
+(default,'2014-07-01','8','11'),
+(default,'2014-08-01','9','12'),
+(default,'2014-09-01','10','13'),
+(default,'2014-10-01','11','14');
+
+/*VISUALIZAR DADOS DE MULTIPLAS JANELAS*/
+
+select g.nome ,g.id, a.idgafanhoto, c.idcurso,a.idcurso, c.nome from gafanhotos as g
+inner join assiste as a on g.id = a.idgafanhoto
+inner join cursos as c on c.idcurso = a.idcurso
+order by g.nome;

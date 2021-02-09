@@ -48,7 +48,8 @@ select * from gafanhotos where sexo='F' and altura > '1.90';
 /*EXERCÍCIOS SELECT 3*/
 select profissao,count(*)  from gafanhotos group by profissao order by count(profissao);
 select sexo,count(*) from gafanhotos where nascimento > '2005-01-01' group by sexo ;
-select * from gafanhotos where nacionalidade = 'brasil';
-select nacionalidade, count(*) from gafanhotos where nacionalidade != 'brasil' group by nacionalidade
-having count(nacionalidade) > 1 ;
+select nacionalidade,count(*) from gafanhotos where nacionalidade = 'portugal';
+select nacionalidade, count(*) from gafanhotos where nacionalidade != 'brasil' group by nacionalidade having count(nacionalidade) > 3;
+select avg(altura) from gafanhotos;
+select altura,count(*),peso from gafanhotos where peso > '100' group by altura having altura > (select avg(altura) from gafanhotos) order by count(*);
 

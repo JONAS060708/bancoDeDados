@@ -1,3 +1,3 @@
 /*DATA QUERY LANGUAGE*/
 
-select * from cursos;
+select * from cursos;				

@@ -52,8 +52,10 @@ values
 (default,'2014-10-01','11','14');
 
 /*VISUALIZAR DADOS DE MULTIPLAS JANELAS*/
+select * from assiste ;
 
-select g.nome ,g.id, a.idgafanhoto, c.idcurso,a.idcurso, c.nome from gafanhotos as g
-inner join assiste as a on g.id = a.idgafanhoto
-inner join cursos as c on c.idcurso = a.idcurso
-order by g.nome;
+select g_nome,c_nome from gafanhotos as g
+inner join assiste as a on g.g_id = a.idgafanhoto
+inner join cursos as c on c.c_id = a.idcurso
+#group by g_nome
+order by g_nome ;
